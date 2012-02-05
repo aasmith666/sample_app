@@ -1,5 +1,5 @@
 #!/bin/ruby
-#require 'redgreen'
+require 'redgreen'
 require 'autotest/timestamp'
  
 module Autotest::GnomeNotify
