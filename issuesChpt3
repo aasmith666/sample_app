@@ -1,0 +1,35 @@
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git add .
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git commit -m "Done with static pages"
+[static_pages 066172c] Done with static pages
+ 18 files changed, 324 insertions(+), 24 deletions(-)
+ create mode 100644 .autotest~
+ create mode 100644 .rspec~
+ create mode 100644 app/controllers/pages_controller.rb~
+ create mode 100644 app/views/pages/about.html.erb
+ create mode 100644 app/views/pages/about.html.erb~
+ create mode 100644 app/views/pages/contact.html.erb~
+ create mode 100644 app/views/pages/home.html.erb~
+ create mode 100644 config/routes.rb~
+ create mode 100644 spec/spec_helper.rb~
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git co master
+Switched to branch 'master'
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git merge static-pages
+fatal: 'static-pages' does not point to a commit
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git status
+# On branch master
+nothing to commit (working directory clean)
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git add .
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git commit
+# On branch master
+nothing to commit (working directory clean)
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ bundle exec rspec spec/
+No examples found.
+
+
+Finished in 0.00003 seconds
+0 examples, 0 failures
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git push
+Everything up-to-date
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ git push heroku
+Everything up-to-date
+student@matcUbuntu:~/rails_class/tutorial/sample_app$ 
