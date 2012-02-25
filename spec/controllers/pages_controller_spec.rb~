@@ -13,9 +13,9 @@ describe PagesController do
       get 'home'
       response.should be_success
     end
-    it "should have the right title" do
+    it "should have the right heading" do
       get 'home'
-      response.should have_selector("title",
+      response.should have_selector("h1",
                                     :content => @base_title + " | Home")
     end
   end
