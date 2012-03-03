@@ -12,6 +12,7 @@ gem 'will_paginate', '3.0.pre2'
 group :development do
   gem 'heroku'
   gem 'rspec-rails', '2.6.1'
+  #gem 'annotate-models', '1.0.4'
 #  gem 'web-app-theme', '>= 0.6.2'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
