@@ -27,7 +27,7 @@ describe User do
   it "should reject names that are too long" do
     long_name = "a" * 51
     long_name_user = User.new(@attr.merge(:name => long_name))
-    lont_name_user.should_not be_valid
+    long_name_user.should_not be_valid
   end
   
   it "should accept valid email addresses" do

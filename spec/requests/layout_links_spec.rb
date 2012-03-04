@@ -26,8 +26,8 @@ describe "LayoutLinks" do
   #I DON'T UNDERSTAND WHY THIS FAILS
   
   #it "should have a Sign up page at '/signup'" do
-  #  get '/signup'
-  #  response.should have_selector('title', :content => "Sign up")
+    #get '/signup'
+    #response.should have_selector('title', :content => "Sign up")
   #end
   
   it "should have the right links on the layout" do
