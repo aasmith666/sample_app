@@ -1,6 +1,6 @@
-<h1><%= title %></h1>
-
+<h1><%= @title %></h1>
 <%= form_for(@user) do |f| %>
+	<%= render 'shared/error_messages' %>
 
 	<div class="field">
 		<%= f.label :name %><br />
