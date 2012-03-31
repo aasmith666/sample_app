@@ -1,6 +1,6 @@
 SampleApp::Application.routes.draw do
   
-  resources :users
+  resources :users #corresponds to the Show action in the Users controller
   #get "users/new"
   root 	:to => 'pages#home'
   

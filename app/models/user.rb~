@@ -29,12 +29,52 @@ class User < ActiveRecord::Base
   #def User.authenticate(email, submitted_password)
 	  #user = self.find_by_email
   #end
-  class << self
-	def User.authenticate(email, submitted_password)
-	  user = find_by_email(email)
-	  return nil if user.nil?
-	end
+  
+  #def User.authenticate(email, submitted_password)
+  #  user = find_by_email(email)
+  #  return nil  if user.nil?
+  #  return user if user.has_password?(submitted_password)
+  #end
+  
+  #def self.authenticate(email, submitted_password)
+   #user = find_by_email(email)
+    #return nil  if user.nil?
+    #return user if user.has_password?(submitted_password)
+    #return nil
+  #end
+  
+  #def self.authenticate(email, submitted_password)
+    #user = find_by_email(email)
+    #if user.nil?
+      #nil
+    #elsif user.has_password?(submitted_password)
+      #user
+    #else
+      #nil
+    #end
+  #end
+  
+  #def self.authenticate(email, submitted_password)
+   # user = find_by_email(email)
+  #  if user.nil?
+   #   nil
+   # elsif user.has_password?(submitted_password)
+   #   user
+   # end
+  #end
+  
+  def self.authenticate(email, submitted_password)
+    user = find_by_email(email)
+    user && user.has_password?(submitted_password) ? user : nil
   end
+  
+  #class << self
+	#def User.authenticate(email, submitted_password)
+	  #user = find_by_email(email)
+	  #return nil if user.nil?
+	  #return user if user.has_password?(submitted_password)
+	#end
+  #end
   
   private
   
@@ -54,7 +94,7 @@ class User < ActiveRecord::Base
     
     #Add encryption functionality
     def secure_hash(string)
-      Digest::SHA2.hexidigest(string)
+      Digest::SHA2.hexdigest(string)
     end
 end
 
