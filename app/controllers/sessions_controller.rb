@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
 		  render 'new'
 	  else
 		  #handle success
+		  sign_in user #need to create the sign_in function in the SessionsHelper
+		  redirect_to user
 	  end
   end
   
