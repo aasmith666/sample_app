@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
   
   def destroy
 	  #@title = "Sign In"
-	  
+	  sign_out
+	  redirect_to root_path
   end
 
 end
