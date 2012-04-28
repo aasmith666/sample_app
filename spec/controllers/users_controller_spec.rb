@@ -67,6 +67,65 @@ describe UsersController do
 	end
   end
   
+  describe "GET 'show'" do
+		before(:each) do
+			@user = Factory(:user)
+		 end
+		 
+		 it "should be successful" do
+			get :show, :id => @user
+			response.should be_success
+		end
+		
+		it "should find the right user" do
+			get :show, :id  => @user
+			assigns(:user).should == @user
+		end
+		
+		it "should have the right title" do
+			get :show, :id  => @user
+			response.should have_selector('title', :content => @user.name)
+		end
+		
+		it "should have the user's name" do
+			get :show, :id => @user
+			response.should have_selector('h1', :content => @user.name)			
+		end
+		
+		it "should have a profile image" do
+			get :show, :id => @user
+			response.should have_selector('h1>img', :class => "gravatar")			
+		end
+		
+		it "should have the right url" do
+			get :show, :id => @user
+			response.should have_selector('td>a', :content => user_path(@user),
+													:href  => user_path(@user))
+		end
+  
+		it "should show the users microposts" do
+			mp1 = Factory(:micropost, :user => @user, :content => "Foo Bar")
+			mp2 = Factory(:micropost, :user => @user, :content => "Foo Bar2")
+			get :show, :id => @user
+			response.should have_selector('span.content', :content => mp1.content)
+			response.should have_selector('span.content', :content => mp2.content)
+		end
+		
+		it "should paginate microposts" do
+			35.times { Factory(:micropost, :user => @user, :content => "fooooooo") }
+			get :show, :id => @user
+			response.should have_selector('div.pagination')	
+		end
+		
+		it "should supply a micropost count" do
+			10.times { Factory(:micropost, :user => @user, :content => "fooooooo") }
+			get :show, :id => @user
+			response.should have_selector('td.sidebar', 
+			                              :content => @user.microposts.count.to_s)	
+		end
+	end
+
+  
   describe "GET 'new'" do
     it "should be successful" do
       get :new
@@ -149,7 +208,7 @@ describe UsersController do
 			 flash[:success].should =~ /welcome to the sample app/i 
 		  end
 		  
-		  it "should sing in the user" do
+		  it "should sign in the user" do
 			  post :create, :user => @attr
 			  controller.should be_signed_in
 		  end
