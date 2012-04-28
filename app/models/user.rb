@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   #ADD SECURITY
   attr_accessible :name, :email, :password, :password_confirmation
   
+  #ADD ASSOCIATION
+  has_many :microposts, :dependent => :destroy
+  
   #Define regular expression variable for valid email address
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   

@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   #ADD SECURITY
   attr_accessible :name, :email, :password, :password_confirmation
   
+  #ADD ASSOCIATION
+  has_many :microposts
+  
   #Define regular expression variable for valid email address
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -26,48 +29,7 @@ class User < ActiveRecord::Base
     self.encrypted_password == encrypt(submitted_password)
   end
   
-  #def User.authenticate(email, submitted_password)
-	  #user = self.find_by_email
-  #end
-  
-  #def User.authenticate(email, submitted_password)
-  #  user = find_by_email(email)
-  #  return nil  if user.nil?
-  #  return user if user.has_password?(submitted_password)
-  #end
-  
-  #def self.authenticate(email, submitted_password)
-   #user = find_by_email(email)
-    #return nil  if user.nil?
-    #return user if user.has_password?(submitted_password)
-    #return nil
-  #end
-  
-  #def self.authenticate(email, submitted_password)
-    #user = find_by_email(email)
-    #if user.nil?
-      #nil
-    #elsif user.has_password?(submitted_password)
-      #user
-    #else
-      #nil
-    #end
-  #end
-  
-  #def self.authenticate(email, submitted_password)
-   # user = find_by_email(email)
-  #  if user.nil?
-   #   nil
-   # elsif user.has_password?(submitted_password)
-   #   user
-   # end
-  #end
-  
-  #def self.authenticate(email, submitted_password)
-    #user = find_by_email(email)
-    #user && user.has_password?(submitted_password) ? user : nil
-  #end
-  
+   
   class << self
 	def User.authenticate(email, submitted_password)
 	  user = find_by_email(email)
@@ -106,6 +68,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: users
@@ -117,5 +80,6 @@ end
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  admin              :boolean         default(FALSE)
 #
 
