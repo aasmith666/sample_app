@@ -204,8 +204,23 @@ describe User do
 			end
 		end
 		
+		describe "status feed" do
+			
+			it "should have a feed" do
+				@user.should respond_to(:feed)
+			end
+			
+			it "should include the user's microposts" do
+				@user.feed.should include(@mp1)
+				@user.feed.should include(@mp2)
+			end
+			
+			it "should not include a different users microposts " do
+				mp3 = Factory(:micropost, :user => Factory(:user, :email => Factory.next(:email)))
+				@user.feed.should_not include(mp3)
+			end
+		end
 	end
-	
 end
 
 
@@ -223,4 +238,3 @@ end
 #  salt               :string(255)
 #  admin              :boolean         default(FALSE)
 #
-

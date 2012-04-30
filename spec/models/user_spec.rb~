@@ -199,13 +199,23 @@ describe User do
 			@user.destroy
 			[@mp1, @mp2].each do |micropost|
 				lambda do
-					Micropost.find(micropost.id)
+					Micropost.find(micropost)
 				end.should raise_error(ActiveRecord::RecordNotFound)
 			end
 		end
 		
+		describe "status feed" do
+			
+			it "should have a feed" do
+				@user.should respond_to(:feed)
+			end
+			
+			it "should include the user's microposts" do
+				@user.feed.should include(@mp1)
+				@user.feed.should include(@mp2)
+			end
+		end
 	end
-	
 end
 
 
@@ -223,4 +233,3 @@ end
 #  salt               :string(255)
 #  admin              :boolean         default(FALSE)
 #
-
