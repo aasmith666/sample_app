@@ -15,7 +15,8 @@ group :development do
   #gem 'annotate-models', '1.0.4'
 #  gem 'web-app-theme', '>= 0.6.2'
   gem 'annotate', '2.4.0'
-  gem 'faker', '0.3.1'
+  gem 'faker', '0.3.1', :require => false
+
 end
 
 group :test do
