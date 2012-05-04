@@ -8,6 +8,7 @@ gem 'rails', '3.0.11'
 gem 'sqlite3', '1.3.3', :group => :development
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
+#gem 'faker', '0.3.1'
 
 group :development do
   gem 'heroku'
@@ -15,7 +16,7 @@ group :development do
   #gem 'annotate-models', '1.0.4'
 #  gem 'web-app-theme', '>= 0.6.2'
   gem 'annotate', '2.4.0'
-  gem 'faker', '0.3.1', :require => false
+  gem 'faker', '0.3.1'
 
 end
 
