@@ -120,7 +120,8 @@ describe UsersController do
 		it "should supply a micropost count" do
 			10.times { Factory(:micropost, :user => @user, :content => "fooooooo") }
 			get :show, :id => @user
-			response.should have_selector('td.sidebar round', :content => @user.microposts.count.to_s)	
+			response.should have_selector('td.sidebar', 
+			                              :content => @user.microposts.count.to_s)	
 		end
 	end
 
