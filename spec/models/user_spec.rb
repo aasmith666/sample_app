@@ -219,6 +219,12 @@ describe User do
 				mp3 = Factory(:micropost, :user => Factory(:user, :email => Factory.next(:email)))
 				@user.feed.should_not include(mp3)
 			end
+			
+			#it "should include the microposts" do
+			#	followed = Factory(:user, :email => Factory.next(:email))
+			#	mp3 = Factory(:micropost, :user => followed)
+			#	@user.feed.should include(mp3)
+			#end
 		end
 	end
 	

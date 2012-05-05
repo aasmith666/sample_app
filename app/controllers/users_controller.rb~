@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-	before_filter :authenticate, 	:only => [:index, :edit, :update, :destroy]
+	before_filter :authenticate, 	:except => [:show, :new, :create]
 	before_filter :correct_user, 	:only => [:edit, :update]
 	before_filter :admin_user, 		:only => :destroy
 	
@@ -20,6 +20,16 @@ class UsersController < ApplicationController
 		@title = @user.name	
 	end
   
+	def following
+		@title = "Following"
+		@user = User.find(params[:id])
+		@users = @user.following.paginate(:page => params[:page])
+	end
+	
+	def followers
+		
+	end
+	
 	def create 
 		@user  = User.new(params[:user])
 		if @user.save
@@ -55,10 +65,7 @@ class UsersController < ApplicationController
 	end
   
 	private
-	def authenticate
-	  #flash[:notice] = "Please sign in to access this page"
-	  deny_access unless signed_in?
-	end 
+	
 	
 	def correct_user
 		@user = User.find(params[:id])
