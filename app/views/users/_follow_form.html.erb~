@@ -4,4 +4,6 @@
 			<% render 'unfollow' %>
 		<% else %>
 			<% render 'follow' %>		
+		<% end %>
 	</div>
+<% end %>
